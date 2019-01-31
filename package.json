@@ -1,0 +1,48 @@
+{
+  "name": "@weather-stuff-us/web",
+  "version": "0.0.0",
+  "description": "web ui for weather-stuff-us",
+  "license": "MIT",
+  "author": "Patrick Mueller <pmuellr@apache.org> (https://github.com/pmuellr)",
+  "homepage": "https://github.com/weather-stuff-us/web",
+  "main": "weather-stuff-us.js",
+  "scripts": {
+    "build": "tools/build.sh",
+    "check-deps": "tools/check-deps.sh",
+    "standard": "standard --verbose",
+    "start": "node dev-server.js",
+    "utest": "tap test/test-*.js",
+    "test": "standard --verbose && npm -s run utest",
+    "watch": "nodemon --exec 'npm run check-deps && standard --verbose && tools/quiet-utest.sh && tools/build.sh'",
+    "watch-server": "nodemon --exec 'node --inspect=9231 dev-server.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/weather-stuff-us/web.git"
+  },
+  "bugs": {
+    "url": "https://github.com/weather-stuff-us/web/issues"
+  },
+  "standard": {
+    "ignore": [
+      "tmp/**",
+      "dist/**"
+    ]
+  },
+  "nodemonConfig": {
+    "ignore": [ "dist/*" ],
+    "delay": "1000"
+  },
+  "dependencies": {
+    "c3": "^0.6.12",
+    "d3": "^5.7.0",
+    "leaflet": "^1.4.0"
+  },
+  "devDependencies": {
+    "dependency-check": "^3.3.0",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.9",
+    "standard": "^12.0.1",
+    "tap": "^12.4.0"
+  }
+}
